@@ -1,0 +1,124 @@
+<!doctype <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hints</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/hints.css"></style>
+</head>
+<body>
+    
+    <header class="head">    
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+        <div class="navbar-header">
+        <a class="navbar-brand" href="#">SHERLOCKED</a>
+        </div>
+              <ul class="nav navbar-nav">
+              
+              <li>  <a href="login.php" target="_blank">Home</a></li>
+              <li> <a id="rule">Rules</a></li>
+              <li >  <a href="leaderboard.php" target"_blank">Leaderboard</a></li>
+              <li class="active">  <a href="https://facebook.com/ahltech" target="_blank">Hints</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+              <li> <a href="logout.php" ><span class="glyphicon glyphicon-log-in"></span></a></li>
+              </ul>
+         </div>
+        </nav>
+        <div id="myModal" class="modal">
+
+<!-- Modal content -->
+<div class="modal-content">
+            <span class="close">&times;</span>
+            <h4 class="rules-heading">Rules & Regulations</h4>
+            <p>     
+            Only the correct answer to the question can bring you to the next level.<br>
+            All answers are in <b>LOWERCASE</B> and contain absolutely <b>NO SPACES</b>. <br>
+            Anything can be a clue!- From that comment in the source to that image on some random page.<br>
+            A little Awareness can do the magic.<br>
+            Hints will be posted from time to time.<br>
+            Anyone can participate but only the ones with valid names, emails and class would be competing.<br>
+            This is a single person event, if someone is found playing it in groups, he/she will be disqualified with immediate effect.<br>   
+            
+            </p>
+</div>
+
+</div>
+    
+        </header>
+
+       
+
+<!--=======================-->
+<!-- DISQUS COMMENTS BELOW -->
+<!--=======================-->
+
+ <div id="disqus_thread"></div>
+ 
+
+ <script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://ahltech.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+         
+
+<!--DISQUS COMMENTS END-->
+
+<footer class="footer ">
+    <div class="container">
+      <span class="text-muted">Designed by Akshit Pareek.</span>
+    </div>
+  </footer>
+
+
+
+
+  <script> // Get the modal
+    var modal = document.getElementById('myModal');
+    
+    // Get the button that opens the modal
+    var btn = document.getElementById("rule");
+    
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    
+    // When the user clicks on the button, open the modal 
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+    
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    </script>
+
+<script id="dsq-count-scr" src="//ahltech.disqus.com/count.js" async></script>
+</body>
+</html>

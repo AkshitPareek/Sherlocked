@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteBase /
+RewriteCond %{HTTP_HOST} ^cryptica.000webhostapp.com$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^cryptica.000webhostapp.com$
+RewriteCond %{REQUEST_URI} !learn/
+RewriteRule (.*) /learn/$1 [L]
+php_flag output_buffering on
