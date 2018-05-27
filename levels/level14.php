@@ -6,12 +6,12 @@ include 'ip.php';
 // If session variable is not set it will redirect to login page
 
 if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
-    header("location: /learn/login.php");
+    header("location: /sherlocked/login.php");
     exit;
   }
   $lev = $_SESSION['ques']; 
   if($_SESSION['ques'] < 14){
-      header('location: /learn/dq.php');
+      header('location: /sherlocked/dq.php');
   }
   
 
@@ -107,8 +107,8 @@ mysqli_close($link);
     <title>Sherlocked</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <link rel="stylesheet" href="/learn/css/level_style.css">
-    <script src="/learn/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="/sherlocked/css/level_style.css">
+    <script src="/sherlocked/js/bootstrap.js"></script>
  
     
 </head>
@@ -127,11 +127,11 @@ mysqli_close($link);
           <ul class="nav navbar-nav">
           <li class="active"><a href="level0.php">Home</a></li>
            <li> <a id="rule">Rules</a></li>
-          <li>  <a href="/learn/leaderboard.php" target="_blank">Leaderboard</a></li>
-          <li>  <a href="/learn/hints.html" target="_blank">Hints</a></li>
+          <li>  <a href="/sherlocked/leaderboard.php" target="_blank">Leaderboard</a></li>
+          <li>  <a href="/sherlocked/hints.html" target="_blank">Hints</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-          <li> <a href="/learn/logout.php" ><span class="glyphicon glyphicon-log-in"></span></a></li>
+          <li> <a href="/sherlocked/logout.php" ><span class="glyphicon glyphicon-log-in"></span></a></li>
             </ul>
                 </div>
         </nav>

@@ -2,11 +2,11 @@
 
 session_start();
 if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
-    header("location: /learn/login.php");
+    header("location: /sherlocked/login.php");
     exit;
   }
   if($_SESSION["role"]!=2){
-    header('Location: /learn/dq.php');
+    header('Location: /sherlocked/dq.php');
   } 
 // Check existence of id parameter before processing further
 if(isset($_GET["username"]) && !empty(trim($_GET["username"]))){

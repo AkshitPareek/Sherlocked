@@ -7,5 +7,5 @@ $_SESSION = array();
  
 // Destroy the session.
 session_destroy();
-header('location: /learn/index.php');
+header('location: /sherlocked/index.php');
 ?>

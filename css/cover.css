@@ -28,7 +28,7 @@ a:hover {
 html,
 body {
   height: 100%;
-  background-image: url("/learn/images/sherlock.jpg");
+  background-image: url("/sherlocked/images/sherlock.jpg");
   
 }
 
@@ -122,10 +122,6 @@ body {
 }
 
 
-/*Rules*/
-,rules {
-
-}
 
 
 /*

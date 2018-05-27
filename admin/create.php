@@ -4,11 +4,11 @@ require_once 'config.php';
 
 session_start();
 if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
-    header("location: /learn/login.php");
+    header("location: /sherlocked/login.php");
     exit;
   }
   if($_SESSION["role"]!=2){
-    header('Location: /learn/dq.php');
+    header('Location: /sherlocked/dq.php');
   }
  
 // Define variables and initialize with empty values
