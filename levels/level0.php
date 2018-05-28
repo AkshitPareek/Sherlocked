@@ -91,7 +91,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $_SESSION['ques'] = 1; 
                     header("location: level1.php");//put next level here
                 }else {
-		            echo "<meta http-equiv='refresh' content='0'>";
+                echo "<meta http-equiv='refresh' content='0'>";
                 }
     }
         }    
@@ -113,9 +113,8 @@ mysqli_close($link);
     <title>Sherlocked</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <link rel="stylesheet" href="/sherlocked/css/level_style.css">
     <script src="/sherlocked/js/bootstrap.js"></script>
- 
+    <link rel="stylesheet" href="/sherlocked/css/level_style.css">
     
 </head>
 <body >
@@ -127,19 +126,32 @@ mysqli_close($link);
         
         <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
-        <div class="navbar-header">
-        <a class="navbar-brand" href="#">SHERLOCKED</a>
-            </div>
-          <ul class="nav navbar-nav">
-          <li class="active"><a href="level0.php">Home</a></li>
-           <li> <a id="rule">Rules</a></li>
-          <li>  <a href="/sherlocked/leaderboard.php" target="_blank">Leaderboard</a></li>
-          <li>  <a href="/sherlocked/hints.html" target="_blank">Hints</a></li>
+             <div class="navbar-header">
+                  
+                  <a class="navbar-brand" href="#">SHERLOCKED</a>
+                  <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                  </button>
+              </div>
+
+
+            <div class="collapse navbar-collapse navHeaderCollapse">
+            
+            <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li> <a id="rule">Rules</a></li>
+            <li>  <a href="/sherlocked/leaderboard.php" target="_blank">Leaderboard</a></li>
+            <li>  <a href="/sherlocked/hints.html" target="_blank">Hints</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-          <li> <a href="/sherlocked/logout.php" ><span class="glyphicon glyphicon-log-in"></span></a></li>
+            <li> <a href="/sherlocked/logout.php" ><span class="glyphicon glyphicon-log-in"></span></a></li>
             </ul>
-                </div>
+
+            </div>
+
+        </div>
         </nav>
         <div id="myModal" class="modal">
 
@@ -180,15 +192,15 @@ mysqli_close($link);
         <div class="strip">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <div class="form-group <?php echo (!empty($answer_err)) ? 'has-error' : ''; ?>"> <!-- Important! !-->
-		<input type="text" class="form-control " id="answer" name="answer" placeholder="Answer">
-		<span class="help-block"><?php echo $answer_err ?></span>								
-	    </div>
-	    <div class="form-group" align="center"> <!-- Submit button !-->
+    <input type="text" class="form-control " id="answer" name="answer" placeholder="Answer">
+    <span class="help-block"><?php echo $answer_err ?></span>               
+      </div>
+      <div class="form-group" align="center"> <!-- Submit button !-->
         <button type="submit" class="btn btn-default btn-block"><span class="glyphicon glyphicon-ok"></span> Submit</button>
-	    </div>    
+      </div>    
     
-	 
-</form>	
+   
+</form> 
 </div><br><br>
             <div class="ip">    
             <div class="alert alert-primary  alert-dismissible" role="alert">
@@ -236,4 +248,4 @@ window.onclick = function(event) {
 </script>
 </body>
 
-</html>			
+</html>     

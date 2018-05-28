@@ -10,6 +10,9 @@ while($row = $rs_result->fetch_assoc()){
     $post[] = $row;
   }
   
+  
+  
+
 ?>
 
  <!DOCTYPE html>
@@ -18,14 +21,20 @@ while($row = $rs_result->fetch_assoc()){
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Leaderboard</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1,  maximum-scale=1, user-scalable=no" >
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
     <meta name="description" content="Sherlocked | Online Cryptic Hunt">
     <meta name="author" content="Akshit Pareek">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript"src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/rowreorder/1.2.3/css/rowReorder.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css">
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/rowreorder/1.2.3/js/dataTables.rowReorder.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
+     <script src="js/bootstrap.js"></script>
+
+   
     <link rel="stylesheet" href="css/leaderboard.css"></style>
 </head>
 <body>
@@ -35,18 +44,28 @@ while($row = $rs_result->fetch_assoc()){
         <div class="container-fluid">
         <div class="navbar-header">
         <a class="navbar-brand" href="#">SHERLOCKED</a>
-            </div>
+                    <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                  </button>
+        </div>
+
+        <div class="collapse navbar-collapse navHeaderCollapse">
           <ul class="nav navbar-nav">
               
-          <li>  <a href="login.php" target="_blank">Home</a></li>
-           <li> <a id="rule">Rules</a></li>
-          <li class="active">  <a href="leaderboard.php">Leaderboard</a></li>
-          <li>  <a href="hints.html" target="_blank">Hints</a></li>
+            <li>  <a href="login.php" target="_blank">Home</a></li>
+            <li> <a id="rule">Rules</a></li>
+            <li class="active">  <a href="leaderboard.php">Leaderboard</a></li>
+            <li>  <a href="hints.html" target="_blank">Hints</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-          <li> <a href="logout.php" ><span class="glyphicon glyphicon-log-in"></span></a></li>
+            <li> <a href="logout.php" ><span class="glyphicon glyphicon-log-in"></span></a></li>
             </ul>
-                </div>
+            </div>
+
+
+        </div>
         </nav>
         <div id="myModal" class="modal">
 
@@ -88,32 +107,42 @@ while($row = $rs_result->fetch_assoc()){
                     <div class="card">
                                 <div class="card-body">
            
-                    <table id="myTable" class="table table-bordered table-striped" cellspacing="0" data-provide="datatables" >
+                    <table id="myTable" class="display nowrap" style= "width:100%" >
                         <thead class="thead">
                                 <tr>
                                     <th scope="col">Rank</th>
                                     <th scope="col">Username</th>
+                                    
                                     <th scope="col">Level</th>
                                     <th scope="col">Clear Time</th>
                                 </tr>
                                 </thead>
-                                <tbody class="tbody" ><?php 
-                             foreach ($post as $row) 
+                                <tbody class="tbody" >
+                            <?php 
+                                foreach ($post as $row) 
                                     {       echo "<tr>";
                                             echo "<td>" .$rank. "</td>";
                                             echo "<td>" .$row['username'] . "</td>";
+                                            
                                             echo "<td>" .$row['level'] . "</td>";
                                             echo "<td>" .$row['clear_time'] . "</td>";
                                             echo "</tr>";
 
                                             $rank ++;
                                      }
-                         ?></tbody>
+                              ?>
+                           
+                         </tbody>
                          </table>
                          <script>
-                                $(document).ready(function(){
-                                    $('#myTable').dataTable();
-                                });
+                                $(document).ready(function() {
+                                var table = $('#myTable').DataTable( {
+                                rowReorder: {
+                                selector: 'td:nth-child(2)'
+                                },
+                                responsive: true
+                                } );
+                                } );
                         </script>
                   </div>       
             </div>

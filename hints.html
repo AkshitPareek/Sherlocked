@@ -4,29 +4,42 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Hints</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" >
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script  src="js/bootstrap.js"></script>
     <link rel="stylesheet" href="css/hints.css"></style>
 </head>
 <body>
     
     <header class="head">    
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-        <div class="navbar-header">
-        <a class="navbar-brand" href="#">SHERLOCKED</a>
-        </div>
-              <ul class="nav navbar-nav">
-              
-              <li>  <a href="login.php" target="_blank">Home</a></li>
-              <li> <a id="rule">Rules</a></li>
-              <li >  <a href="leaderboard.php" target"_blank">Leaderboard</a></li>
-              <li class="active">  <a href="https://facebook.com/ahltech" target="_blank">Hints</a></li>
-              </ul>
-              <ul class="nav navbar-nav navbar-right">
-              <li> <a href="logout.php" ><span class="glyphicon glyphicon-log-in"></span></a></li>
-              </ul>
+       
+              <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+             <div class="navbar-header">
+                  
+                  <a class="navbar-brand" href="#">SHERLOCKED</a>
+                  <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                  </button>
+              </div>
+
+
+            <div class="collapse navbar-collapse navHeaderCollapse">
+            
+            <ul class="nav navbar-nav">
+            <li class="active"><a href="login.php">Home</a></li>
+            <li> <a id="rule">Rules</a></li>
+            <li>  <a href="/sherlocked/leaderboard.php" target="_blank">Leaderboard</a></li>
+            <li>  <a href="/sherlocked/hints.html" target="_blank">Hints</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            <li> <a href="/sherlocked/logout.php" ><span class="glyphicon glyphicon-log-in"></span></a></li>
+            </ul>
+
+            </div>
          </div>
         </nav>
         <div id="myModal" class="modal">

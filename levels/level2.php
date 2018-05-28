@@ -121,21 +121,32 @@ mysqli_close($link);
 
 <header class="head">
         
-        <nav class="navbar navbar-inverse navbar-fixed-top">
+          <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
-        <div class="navbar-header">
-        <a class="navbar-brand" href="#">SHERLOCKED</a>
-            </div>
-          <ul class="nav navbar-nav">
-          <li class="active"><a href="level0.php">Home</a></li>
-           <li> <a id="rule">Rules</a></li>
-          <li>  <a href="/sherlocked/leaderboard.php" target="_blank">Leaderboard</a></li>
-          <li>  <a href="/sherlocked/hints.html" target="_blank">Hints</a></li>
+             <div class="navbar-header">
+                  
+                  <a class="navbar-brand" href="#">SHERLOCKED</a>
+                  <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                  </button>
+              </div>
+
+
+            <div class="collapse navbar-collapse navHeaderCollapse">
+            
+            <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li> <a id="rule">Rules</a></li>
+            <li>  <a href="/sherlocked/leaderboard.php" target="_blank">Leaderboard</a></li>
+            <li>  <a href="/sherlocked/hints.html" target="_blank">Hints</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-          <li> <a href="/sherlocked/logout.php" ><span class="glyphicon glyphicon-log-in"></span></a></li>
+            <li> <a href="/sherlocked/logout.php" ><span class="glyphicon glyphicon-log-in"></span></a></li>
             </ul>
-                </div>
+
+            </div>
         </nav>
         <div id="myModal" class="modal">
 

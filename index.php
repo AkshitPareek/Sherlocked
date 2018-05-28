@@ -21,7 +21,7 @@
         <div class="inner">
           <h5 class="masthead-brand"><!-- Add font awesome icons -->
             <a href="https://facebook.com/ahltech" target=_blank class="fa fa-facebook"></a>
-            <a href="mailto:aisdigit@gmail.com?subject=BrainScratch" target=_blank class="fa fa-google"></a>
+            <a href="mailto:aisdigit@gmail.com?subject=Sherlocked" target=_blank class="fa fa-google"></a>
             <a href="#" target=_blank class="fa fa-globe"></a></h5>
           <nav class="nav nav-masthead justify-content-center">
             <a class="nav-link active" href="index.php">Home</a>
@@ -35,7 +35,7 @@
       
       <main role="main" class="inner cover">
         <h1 class="cover-heading">SHERLOCKED</h1>
-        <p class="lead">Wake up the Sherlock in you.<br> Or Moriarty, if you wish so. :P</p>
+        <p class="lead"><strong>Overclock</strong> Your Brain!</p>
         
         <p class="lead">
           <a href="login.php" class="btn btn-lg btn-secondary">PLAY NOW!</a>
