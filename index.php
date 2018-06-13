@@ -34,7 +34,7 @@
     <div class="tron">
       
       <main role="main" class="inner cover">
-        <h1 class="cover-heading">SHERLOCKED</h1>
+        <img src="images/heading.png" alt="SHERLOCKED">
         <p class="lead"><strong>Overclock</strong> Your Brain!</p>
         
         <p class="lead">

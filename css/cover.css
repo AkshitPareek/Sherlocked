@@ -28,7 +28,7 @@ a:hover {
 html,
 body {
   height: 100%;
-  background-image: url("/sherlocked/images/sherlock.jpg");
+  background: #111;
   
 }
 
@@ -43,6 +43,7 @@ body {
 
 .cover-container {
   max-width: 100%;
+  padding: 30px;
 }
 
 .fa:hover {
@@ -52,7 +53,7 @@ body {
 /*body*/
 .tron {
   position: absolute;
-  bottom: 6px;
+  width: ;bottom: 6px;
   left: 0;
   right: 0;
   text-align: left;

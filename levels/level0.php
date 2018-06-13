@@ -91,6 +91,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $_SESSION['ques'] = 1; 
                     header("location: level1.php");//put next level here
                 }else {
+                  
                 echo "<meta http-equiv='refresh' content='0'>";
                 }
     }
@@ -115,6 +116,7 @@ mysqli_close($link);
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <script src="/sherlocked/js/bootstrap.js"></script>
     <link rel="stylesheet" href="/sherlocked/css/level_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
 </head>
 <body >
@@ -140,13 +142,14 @@ mysqli_close($link);
             <div class="collapse navbar-collapse navHeaderCollapse">
             
             <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li> <a id="rule">Rules</a></li>
-            <li>  <a href="/sherlocked/leaderboard.php" target="_blank">Leaderboard</a></li>
-            <li>  <a href="/sherlocked/hints.html" target="_blank">Hints</a></li>
+              <li class="active"><a href="#">Home</a></li>
+              <li> <a id="rule">Rules</a></li>
+              <li>  <a href="/sherlocked/leaderboard.php" target="_blank">Leaderboard</a></li>
+              <li>  <a href="/sherlocked/hints.html" target="_blank">Hints</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-            <li> <a href="/sherlocked/logout.php" ><span class="glyphicon glyphicon-log-in"></span></a></li>
+              <li><a href="/sherlocked/user_attempts.php" target="_blank" title="My Attempts">My Attempts</a></li>
+              <li> <a href="/sherlocked/logout.php" ><span class="glyphicon glyphicon-log-in"></span></a></li>
             </ul>
 
             </div>
@@ -214,6 +217,9 @@ mysqli_close($link);
 <footer class="footer ">
       <div class="container">
         <span class="text-muted">Designed by Akshit Pareek.</span>
+        <span class="text-muted pull-right"><a href="https://facebook.com/ahltech" target=_blank class="fa fa-facebook"></a><span><strong>.</strong></span>
+        <a href="mailto:aisdigit@gmail.com?subject=Sherlocked"target=_blank class="fa fa-google"></a><span><strong>.</strong></span>
+        <a href="#" target=_blank class="fa fa-globe"></a></span>
       </div>
     </footer>
 

@@ -1,26 +1,63 @@
-<?php 
+<?php
+ require_once 'config.php';
 
-require_once 'config.php';
-
-$sql = "SELECT * FROM `gameplay` ORDER BY `level` DESC";
-$rs_result = $link->query($sql); 
-$rank = 1;
-$post = array();
-while($row = $rs_result->fetch_assoc()){
-    $post[] = $row;
+session_start();
+if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
+    header("location: /sherlocked/login.php");
+    exit;
   }
-  
-  
-  
 
+  $username = $_SESSION['username'];
+
+    
+    // Prepare a select statement
+    $sql = "SELECT `username`,`level`, `attempts`, `attempt_time`, `ip` FROM `log` WHERE `username` = ? ";
+    
+    if($stmt = mysqli_prepare($link, $sql)){
+        // Bind variables to the prepared statement as parameters
+        mysqli_stmt_bind_param($stmt, "s", $param_username);
+        
+        // Set parameters
+        $param_username = $username;
+        
+        // Attempt to execute the prepared statement
+        if(mysqli_stmt_execute($stmt)){
+            $result = mysqli_stmt_get_result($stmt);
+    
+            if(mysqli_num_rows($result) > 0){
+                $num = 1;
+                $post = array();
+                while($row = mysqli_fetch_assoc($result))
+                {
+                    $post[] = $row;
+                }
+            } else{
+                // URL doesn't contain valid id parameter. Redirect to error page
+                header("location: error.php");
+                exit();
+            }
+            
+        } else{
+    // URL doesn't contain id parameter. Redirect to error page
+    header("location: error.php");
+    exit();
+            }
+    
+     
+    // Close statement
+    mysqli_stmt_close($stmt);
+    }
+    
+    // Close connection
+    mysqli_close($link);
+ 
 ?>
-
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Leaderboard</title>
+    <title>User Attempts</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" >
     <meta name="description" content="Sherlocked | Online Cryptic Hunt">
     <meta name="author" content="Akshit Pareek">
@@ -29,7 +66,7 @@ while($row = $rs_result->fetch_assoc()){
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/rowreorder/1.2.3/css/rowReorder.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/rowreorder/1.2.3/js/dataTables.rowReorder.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
@@ -38,6 +75,7 @@ while($row = $rs_result->fetch_assoc()){
 
 </head>
 <body>
+
 
      <header class="head">    
         <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -55,11 +93,11 @@ while($row = $rs_result->fetch_assoc()){
           <ul class="nav navbar-nav">              
             <li>  <a href="login.php" target="_blank">Home</a></li>
             <li> <a id="rule">Rules</a></li>
-            <li class="active">  <a href="leaderboard.php">Leaderboard</a></li>
+            <li >  <a href="leaderboard.php">Leaderboard</a></li>
             <li>  <a href="hints.html" target="_blank">Hints</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="user_attempts.php" target="_blank" title="My Attempts">My Attempts</a></li>
+            <li class="active"><a  href="user_attempts.php" target="_blank" title="My Attempts">My Attempts</a></li>
             <li> <a href="logout.php" ><span class="glyphicon glyphicon-log-in"></span></a></li>
           </ul>
         </div>
@@ -94,46 +132,46 @@ while($row = $rs_result->fetch_assoc()){
                <div class="header-info" style="margin-top: 0px;">
                <div class="left"><br><br><br>              
                 <h2 class="header-title">
-                <strong style="font-size:8vh;">LEADERBOARD</strong> 
+                <strong style="font-size:8vh;">My Attempts</strong> 
             </h2>
             </div>
             </div>
             </div>
             </header>
-
-               
+<!--===========================================================================-->
+    
+        
             <div class="box">
                     <div class="main-content">
                     <div class="card">
                                 <div class="card-body">
-           
                     <table id="myTable" class="display nowrap" style= "width:100%" >
                         <thead class="thead">
                                 <tr>
-                                    <th scope="col">Rank</th>
-                                    <th scope="col">Username</th>
-                                    <th scope="col">Level</th>
-                                    <th scope="col">Clear Time</th>
+                                    <th>#</th>
+                                    <th>Username</th>
+                                    <th>Level</th>
+                                    <th>Attempts</th>
+                                    <th>Attempt Time</th>
+                                    <th>IP Address</th>
                                 </tr>
                                 </thead>
-                                <tbody class="tbody" >
-                            <?php 
-                                foreach ($post as $row) 
+                                <tbody class="tbody"><?php 
+                             foreach ($post as $row) 
                                     {       echo "<tr>";
-                                            echo "<td>" .$rank. "</td>";
+                                            echo "<td>" .$num. "</td>";
                                             echo "<td>" .$row['username'] . "</td>";
-                                            
                                             echo "<td>" .$row['level'] . "</td>";
-                                            echo "<td>" .$row['clear_time'] . "</td>";
+                                            echo "<td>" .$row['attempts'] . "</td>";
+                                            echo "<td>" .$row['attempt_time'] . "</td>";
+                                            echo "<td>" .$row['ip'] . "</td>";
                                             echo "</tr>";
 
-                                            $rank ++;
+                                            $num++;
                                      }
-                              ?>
-                           
-                         </tbody>
+                         ?></tbody>
                          </table>
-                         <script>
+                        <script>
                                 $(document).ready(function() {
                                 var table = $('#myTable').DataTable( {
                                 rowReorder: {
@@ -143,11 +181,10 @@ while($row = $rs_result->fetch_assoc()){
                                 } );
                                 } );
                         </script>
-                  </div>       
-            </div>
-    </div>
- </div>    
- <br>
+                    </div>
+                </div>
+            </div> 
+            <br>
 <footer class="footer ">
       <div class="container">
         <span class="text-muted">Designed by Akshit Pareek.</span>
@@ -155,12 +192,11 @@ while($row = $rs_result->fetch_assoc()){
         <a href="mailto:aisdigit@gmail.com?subject=Sherlocked"target=_blank class="fa fa-google"></a><span><strong>.</strong></span>
         <a href="#" target=_blank class="fa fa-globe"></a></span>
       </div>
-    </footer>
-              
-                        
-                
-                
-<script> // Get the modal
+    </footer>       
+        
+    
+
+    <script> // Get the modal
 var modal = document.getElementById('myModal');
 
 // Get the button that opens the modal
@@ -186,6 +222,5 @@ window.onclick = function(event) {
     }
 }
 </script>
-
 </body>
 </html>

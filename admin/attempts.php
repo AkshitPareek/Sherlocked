@@ -9,7 +9,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
   } 
 
 
-// Check existence of id parameter before processing further
+// Check existence of username parameter before processing further
 if(isset($_GET["username"]) && !empty(trim($_GET["username"]))){
     // Include config file
     require_once 'config.php';

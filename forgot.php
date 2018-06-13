@@ -36,7 +36,7 @@
             $token = generateNewString();
 
 	        $link->query("UPDATE users SET token='$token', 
-                      tokenExpire=DATE_ADD(NOW(), INTERVAL 5 MINUTE)
+                      tokenExpire=DATE_ADD(NOW(), INTERVAL 720 MINUTE)
                       WHERE email='$email'
             ");
 
@@ -45,9 +45,9 @@
             require_once "PHPMailer/SMTP.php";
             
             $mail = new PHPMailer();
-            
-            $mail->SMTPDebug = 2;                                 // Enable verbose debug output
+
             $mail->isSMTP();                                      // Set mailer to use SMTP
+            $mail->SMTPDebug = 0;                                 // Enable verbose debug output
             $mail->Host = 'smtp.gmail.com';                        // Specify main and backup SMTP servers
             $mail->SMTPAuth = true;                               // Enable SMTP authentication
             $mail->Username = 'aisdigit@gmail.com';                // SMTP username
@@ -65,25 +65,25 @@
 	            
 	            In order to reset your password, please click on the link below:<br>
 	            <a href='
-	            http://domain.com/reset.php?email=$email&token=$token        
+	            http://cryptica.000webhostapp.com/reset.php?email=$email&token=$token        
                 '>Click Here</a>
                 <br>Or Copy this url to your browser address bar:<br>
-                http://domain.com/reset.php?email=$email&token=$token
+                http://cryptica.000webhostapp.com/reset.php?email=$email&token=$token
                 <br><br>
                 
-                The link expires in 5 mins after you recieve this email.<br><br>
+                The link expires in 12 hrs after you recieve this email.<br><br>
 
-	            Regards,<br>
-	            Digit OC
-	        "; //replace the link with our own website link
-
-            if ($mail->send())
-    	        exit(json_encode(array("status" => 1, "msg" => 'Please Check Your Email Inbox!')));
-    	    else
-    	        exit(json_encode(array("status" => 0, "msg" => 'Something went wrong! Please try again!')));
-        } else
-            exit(json_encode(array("status" => 0, "msg" => 'Please Check Your Email!')));
-    }
+	            Regards
+                Digit OC
+                "; //replace the link with our own website link
+                
+                if(!$mail->Send()) {
+                echo "Problem in Sending Password Recovery Email";
+                } else {
+                echo "Please check your email to reset password!";
+                }
+            }
+        }
 ?>
 <!doctype html>
 <html lang="en">
@@ -103,8 +103,10 @@
                 <p> Don't remember your password? No worries.<br>
                     Just Enter your Registered Email ID,
                      and we'll send you an automated mail, with a new random, hard to crack password.</p>
-                <input class="form-control" id="email" placeholder="Your Email Address"><br>
-                <input type="button" class="btn btn-primary" value="Reset Password">
+                
+                    <input class="form-control" id="email" placeholder="Your Email Address"><br>
+                    <input type="button" class="btn btn-primary" value="Reset Password">
+                
                 <br><br>
                 <p id="response"></p>
             </div>

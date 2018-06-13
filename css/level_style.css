@@ -150,8 +150,19 @@
                 opacity: .5;
               }
 
-
              
+             .fa-facebook, .fa-google, .fa-globe {
+             color: #888;
+             }
+             
+             .fa-facebook:hover,.fa-facebook:focus, 
+             .fa-google:hover,.fa-google:focus,
+             .fa-globe:hover,.fa-globe:focus {
+             color: white;
+             text-decoration: none;
+             cursor: pointer;
+             }
+  
 
 
        
